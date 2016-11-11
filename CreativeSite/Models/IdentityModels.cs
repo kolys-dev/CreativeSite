@@ -29,5 +29,7 @@ namespace CreativeSite.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<CreativeSite.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
