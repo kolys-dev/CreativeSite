@@ -11,10 +11,7 @@ namespace CreativeSite.Models
     public class ApplicationUser : IdentityUser
     {
 
-        public virtual ICollection<Creative> Creatives
-        {
-            get; set;
-        }
+        public virtual ICollection<Creative> Creatives { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -38,7 +35,7 @@ namespace CreativeSite.Models
         }
 
         //public System.Data.Entity.DbSet<CreativeSite.Models.ApplicationUser> ApplicationUsers { get; set; }
-        public System.Data.Entity.DbSet<CreativeSite.Models.Creative> Creatives { get; set; }
-        public System.Data.Entity.DbSet<CreativeSite.Models.Chapter> Chapters { get; set; }
+        public DbSet<CreativeSite.Models.Creative> Creatives { get; set; }
+        public DbSet<CreativeSite.Models.Chapter> Chapters { get; set; }
     }
 }
