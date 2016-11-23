@@ -34,3 +34,10 @@ textarea {
     max-width: 280px;
 }
 
+.editor-toolbar a {
+    color: white !important;
+}
+
+.editor-toolbar {
+    background-color: black;
+}
