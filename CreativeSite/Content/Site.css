@@ -36,10 +36,3 @@ textarea {
     color: white !important;
 }
 
-.editor-toolbar {
-    background-color: black;
-}
-
-.editor-toolbar a:hover {
-    color: black !important;
-}
