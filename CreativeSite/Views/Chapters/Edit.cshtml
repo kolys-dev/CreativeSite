@@ -56,10 +56,10 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-    <script>
+    <script>    
         $(function () {
             $("#savebtn").click(function (e) {
-                alert(simplemde.value());
+                alert(simplemde.options.previewRender(simplemde.value()));
             });
         })
     </script>
