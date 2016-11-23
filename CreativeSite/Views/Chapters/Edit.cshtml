@@ -38,14 +38,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.HiddenFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", id = "mdcontent" } })
+                @Html.HiddenFor(model => model.Content, new {  @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
 
              
-                <textarea id="myid"></textarea>
-                <script>
-                    var simplemde = new SimpleMDE();
-                </script>                 
+                <textarea id="mde"></textarea>            
             </div>
         </div>
            
@@ -67,8 +64,12 @@
 
     <script>    
         $(function () {
+            var simplemde = new SimpleMDE(document.getElementById('mde'));
+            
+            simplemde.value($('#Content').val());
+
             $("#savebtn").click(function (e) {
-                $("#mdcontent").val(simplemde.options.previewRender(simplemde.value()));
+                $('#Content').val(simplemde.value());
             });
         })
     </script>
