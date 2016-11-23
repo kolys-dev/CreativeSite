@@ -9,13 +9,15 @@ html, body {
   font-weight: 400;
   font-family: 'Quicksand', 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
   background: -webkit-radial-gradient(bottom left ellipse, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, 0.25), rgba(42, 60, 87, 0.4)), -webkit-linear-gradient(315deg, #670d10, #092756);
-  background: radial-gradient(ellipse at bottom left, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, 0.25), rgba(42, 60, 87, 0.4)), linear-gradient(135deg, #670d10, #092756);
+  background: radial-gradient(ellipse at bottom left, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0.4) 40%), linear-gradient(to bottom, rgba(57, 173, 219, 0.25), rgba(42, 60, 87, 0.4)), linear-gradient(135deg, #670d10, #092756);
 }
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 60px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -34,5 +36,51 @@ textarea {
 
 .editor-toolbar a {
     color: white !important;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:93% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:93% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:93% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:93% 0%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:93% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:93% 0%}
+}
+@keyframes AnimationName { 
+    0%{background-position:93% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:93% 0%}
+}
+
+
+/* Add a gray color to all navbar links */
+.navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    letter-spacing: 4px;
+    
+    background: linear-gradient(316deg, #2f0119, #310022, #0d0134, #00242f, #2f1600, #2f0000);
+    background-size: 800% 1200%;
+
+    -webkit-animation: AnimationName 21s ease infinite;
+    -moz-animation: AnimationName 21s ease infinite;
+    -o-animation: AnimationName 21s ease infinite;
+    animation: AnimationName 21s ease infinite;
+}
+
+
+.navbar-nav li a:hover {
+    color: #1abc9c !important;
 }
 
