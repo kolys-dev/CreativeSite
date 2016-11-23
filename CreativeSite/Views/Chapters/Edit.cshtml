@@ -37,11 +37,6 @@
                 <script>
                     var simplemde = new SimpleMDE();
                 </script>                 
-              <script>
-                  $("#savebtn").click(function (e) {
-                      alert(simplemde.value());
-                  });
-              </script>
             </div>
         </div>
            
@@ -60,4 +55,12 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(function () {
+            $("#savebtn").click(function (e) {
+                alert(simplemde.value());
+            });
+        })
+    </script>
 }

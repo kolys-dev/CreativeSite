@@ -13,7 +13,7 @@ namespace CreativeSite.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201611112134231_migration"; }
+            get { return "201611231745184_migration"; }
         }
         
         string IMigrationMetadata.Source
