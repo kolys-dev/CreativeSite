@@ -96,28 +96,3 @@ nav > ul > li > div:nth-child(2) {
 #chapters {
 margin-top: 50px;
 }
-
-#one {
-  background: -webkit-radial-gradient(bottom left ellipse, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, 0.25), rgba(42, 60, 87, 0.4)), -webkit-linear-gradient(315deg, #670d10, #092756);
-  background: radial-gradient(ellipse at bottom left, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, 0.25), rgba(42, 60, 87, 0.4)), linear-gradient(135deg, #670d10, #092756);
-}
-
-#two {
-  background: -webkit-linear-gradient(315deg, #723362, #9d223c);
-  background: linear-gradient(135deg, #723362, #9d223c);
-}
-
-#three {
-  background: -webkit-linear-gradient(315deg, #2c539e, #63967d);
-  background: linear-gradient(135deg, #2c539e, #63967d);
-}
-
-#four {
-  background: -webkit-linear-gradient(315deg, rgba(244, 226, 156, 0) 0%, #3b293a 100%), -webkit-linear-gradient(left, #f4e29c 0%, #826057 100%);
-  background: linear-gradient(135deg, rgba(244, 226, 156, 0) 0%, #3b293a 100%), linear-gradient(to right, #f4e29c 0%, #826057 100%);
-}
-
-#five {
-  background: -webkit-linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), -webkit-linear-gradient(135deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
-  background: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
-}

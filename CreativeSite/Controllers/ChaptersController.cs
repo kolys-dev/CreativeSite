@@ -96,6 +96,7 @@ namespace CreativeSite.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Chapter chapter = db.Chapters.Find(id);
             if (chapter == null)
             {
