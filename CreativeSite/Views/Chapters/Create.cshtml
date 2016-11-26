@@ -4,6 +4,18 @@
     ViewBag.Title = "Create";
 }
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<style>
+    .editor-toolbar {
+        background-color: white;
+    }
+
+        .editor-toolbar a:hover {
+            color: white !important;
+        }
+</style>
+
 <h2>Create</h2>
 
 
@@ -26,14 +38,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+
+
+                <textarea id="mde"></textarea>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default"  id="createbtn"/>
             </div>
         </div>
     </div>
@@ -45,4 +60,17 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(function () {
+            var simplemde = new SimpleMDE(document.getElementById('mde'));
+
+            simplemde.value($('#Content').val());
+
+            $("#createbtn").click(function (e) {
+                $('#Content').val(simplemde.value());
+            });
+        })
+</script>
 }
