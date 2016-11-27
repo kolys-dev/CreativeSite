@@ -20,6 +20,7 @@ namespace CreativeSite.Controllers
 
             if (id != null)
             {
+                ViewBag.CreativeId = id;
                 return View(db.Chapters.Where(x => x.Creative.Id == id).ToList());
 
             }
@@ -55,18 +56,18 @@ namespace CreativeSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Content")] Chapter chapter)
+        public ActionResult Create([Bind(Include = "Id,Title,Content")] Chapter chapter, int creativeId)
         {
             if (ModelState.IsValid)
             {
-                db.Chapters.Add(chapter);
+                var creative = db.Creatives.Find(creativeId);
+                creative.Chapters.Add(chapter);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", routeValues: new { id = creativeId });
             }
 
             return View(chapter);
         }
-
         // GET: Chapters/Edit/5
         public ActionResult Edit(int? id)
         {
