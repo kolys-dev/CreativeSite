@@ -60,7 +60,7 @@ namespace CreativeSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Content")] Chapter chapter, int? creativeId)
+        public ActionResult Create([Bind(Include = "Id,Title,Content,Tags")] Chapter chapter, int? creativeId)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace CreativeSite.Controllers
         [ValidateInput(false)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Content")] Chapter chapter)
+        public ActionResult Edit([Bind(Include = "Id,Title,Content,Tags")] Chapter chapter)
         {
             if (ModelState.IsValid)
             {
