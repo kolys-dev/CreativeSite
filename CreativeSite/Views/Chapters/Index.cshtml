@@ -9,15 +9,19 @@
 <script src="~/Scripts/chapters-menu.js"></script>
 <nav id="chapters-navigation">
 
-    <ul id="chapters">
-        @foreach (var item in Model)
-        {
-            <li id="item">
-                <div>@Html.DisplayFor(modelItem => item.Id)</div>
-                <div>@Html.DisplayFor(modelItem => item.Title)</div>
-            </li>
-        }
-    </ul>
+    <<ul id="chapters">
+    @{ int i = 1;}
+    @foreach (var chapter in Model)
+    {
+        <li>
+            <div>@i</div>
+            <div>
+                @Html.ActionLink(chapter.Title, "Details", "Chapters", htmlAttributes: new { }, routeValues: new { id = chapter.Id })
+            </div>
+        </li>
+        i++;
+    }
+</ul>
 </nav>
 
 <style>
