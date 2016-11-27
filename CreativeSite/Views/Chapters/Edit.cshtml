@@ -5,6 +5,10 @@
 }
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css"> 
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+<link rel="stylesheet" href="~/Scripts/TagEditor/jquery.tag-editor.css">
+<script src="~/Scripts/TagEditor/jquery.tag-editor.min.js"></script>
+
 <style> 
     .editor-toolbar {
     background-color: white;
@@ -26,7 +30,6 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
-
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -34,15 +37,20 @@
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.HiddenFor(model => model.Content, new {  @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                <textarea id="mde"></textarea>
+                <textarea id="tags"></textarea>
+                <script>
+                    $('#tags').tagEditor({
+                        initialTags: ['Hello', 'World', 'Example', 'Tags'],
+                        delimiter: ', ', /* space and comma */
 
-             
-                <textarea id="mde"></textarea>            
+                    });
+                </script>            
             </div>
         </div>
            
