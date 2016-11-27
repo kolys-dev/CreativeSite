@@ -50,6 +50,11 @@ namespace CreativeSite.Controllers
             }
         }
 
+
+        public ActionResult ProfileUser()
+        {
+            return View();
+        }
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
