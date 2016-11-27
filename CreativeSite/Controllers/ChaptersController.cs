@@ -17,17 +17,18 @@ namespace CreativeSite.Controllers
         // GET: Chapters
         public ActionResult Index(int? id)
         {
-            ViewBag.CreativeId = id;
+            var chapters = db.Chapters;
+
+            MarkDownChaptersContentToHtml(chapters);
 
             if (id != null)
             {
                 ViewBag.CreativeId = id;
-                return View(db.Chapters.Where(x => x.Creative.Id == id).ToList());
-
+                return View(chapters.Where(x => x.Creative.Id == id));
             }
             else
             {
-                return View(db.Chapters.ToList());
+                return View(chapters);
             }
         }
 
@@ -137,6 +138,14 @@ namespace CreativeSite.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private void MarkDownChaptersContentToHtml(IEnumerable<Chapter> chapters)
+        {
+            foreach (var chapter in chapters)
+            {
+                chapter.Content = CommonMark.CommonMarkConverter.Convert(chapter.Content); 
+            }
         }
     }
 }
