@@ -5,24 +5,26 @@
 <hr />
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
-    if (loginProviders.Count() == 0) {
-        <div>
-            <p>
-                There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support logging in via external services.
-            </p>
-        </div>
-    }
-    else {
-        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
-            @Html.AntiForgeryToken()
-            <div id="socialLoginList">
-                <p>
-                    @foreach (AuthenticationDescription p in loginProviders) {
-                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
-                    }
-                </p>
+    using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        <div id="socialLoginList">
+            <div class="text-center">
+                @{ var vk = loginProviders.First(x => x.Caption == "Vkontakte");
+                    var facebook = loginProviders.First(x => x.Caption == "Facebook");
+                    var twitter = loginProviders.First(x => x.Caption == "Twitter"); }
+
+                <button class="btn btn-social btn-vk" type="submit" id="@vk.AuthenticationType" name="provider" value="@vk.AuthenticationType" title="Login VK">
+                    <span class="fa fa-vk"></span> Sign in with VK
+                </button>
+                <button class="btn btn-social btn-facebook" type="submit" id="@facebook.AuthenticationType" name="provider" value="@facebook.AuthenticationType" title="Login Facebook">
+                    <span class="fa fa-facebook"></span> Sign in with Facebook
+                </button>
+                <button class="btn btn-social btn-twitter" type="submit" id="@twitter.AuthenticationType" name="provider" value="@twitter.AuthenticationType" title="Login Twitter">
+                    <span class="fa fa-twitter"></span> Sign in with Twitter
+                </button>
+
             </div>
-        }
-    }
+        </div>
+      }
 }
