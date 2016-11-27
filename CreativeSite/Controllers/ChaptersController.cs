@@ -17,6 +17,7 @@ namespace CreativeSite.Controllers
         // GET: Chapters
         public ActionResult Index(int? id)
         {
+            ViewBag.CreativeId = id;
 
             if (id != null)
             {
@@ -46,8 +47,10 @@ namespace CreativeSite.Controllers
         }
 
         // GET: Chapters/Create
-        public ActionResult Create()
+        public ActionResult Create(int? creativeId)
         {
+            ViewBag.CreativeId = creativeId;
+
             return View();
         }
 
@@ -56,7 +59,7 @@ namespace CreativeSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Content")] Chapter chapter, int creativeId)
+        public ActionResult Create([Bind(Include = "Id,Title,Content")] Chapter chapter, int? creativeId)
         {
             if (ModelState.IsValid)
             {
