@@ -29,6 +29,9 @@
         background-color: rgb(178, 0, 255);
     }
 
+    .chapter-content {
+        padding: 10px;
+    }
 </style>
 
 <p>
@@ -47,7 +50,9 @@
             </div>
             <div id="@index" class="panel-collapse collapse in">
                 <div class="panel-body">
-                    @Html.Raw(item.Content)
+                    <div class="chapter-content">
+                          @Html.Raw(item.Content)
+                    </div>
                 </div>
             </div>
         </div>
