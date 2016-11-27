@@ -42,15 +42,14 @@
             <div class="col-md-10">
                 @Html.HiddenFor(model => model.Content, new {  @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-                <textarea id="mde"></textarea>
-                <textarea id="tags"></textarea>
-                <script>
-                    $('#tags').tagEditor({
-                        initialTags: ['Hello', 'World', 'Example', 'Tags'],
-                        delimiter: ', ', /* space and comma */
+                <textarea id="mde"></textarea>   
+            </div>
+        </div>
 
-                    });
-                </script>            
+        <div class="form-group">
+            <label class="control-label col-md-2">Tags</label>
+            <div class="col-md-10">
+                <textarea class="form-control" name="tags" id="tags"></textarea>
             </div>
         </div>
            
@@ -79,6 +78,12 @@
             $("#savebtn").click(function (e) {
                 $('#Content').val(simplemde.value());
             });
+
+            $('#tags').tagEditor({
+                initialTags: ['Hello', 'World', 'Example', 'Tags'],
+                delimiter: ', ', /* space and comma */
+
+            });
         })
-    </script>
+    </script> 
 }

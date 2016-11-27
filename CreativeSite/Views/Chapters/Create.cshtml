@@ -6,6 +6,10 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+<link rel="stylesheet" href="~/Scripts/TagEditor/jquery.tag-editor.css">
+<script src="~/Scripts/TagEditor/jquery.tag-editor.min.js"></script>
+
 <style>
     .editor-toolbar {
         background-color: white;
@@ -42,7 +46,14 @@
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
 
 
-                <textarea id="mde"></textarea>
+                <textarea id="mde"></textarea>          
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Tags</label>
+            <div class="col-md-10">
+                <textarea class="form-control" name="tags" id="tags"></textarea>
             </div>
         </div>
 
@@ -71,6 +82,11 @@
 
             $("#createbtn").click(function (e) {
                 $('#Content').val(simplemde.value());
+            });
+            $('#tags').tagEditor({
+                initialTags: ['Hello', 'World', 'Example', 'Tags'],
+                delimiter: ', ', /* space and comma */
+
             });
         })
 </script>
