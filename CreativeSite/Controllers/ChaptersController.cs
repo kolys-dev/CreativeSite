@@ -15,9 +15,18 @@ namespace CreativeSite.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Chapters
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View(db.Chapters.ToList());
+
+            if (id != null)
+            {
+                return View(db.Chapters.Where(x => x.Creative.Id == id).ToList());
+
+            }
+            else
+            {
+                return View(db.Chapters.ToList());
+            }
         }
 
         // GET: Chapters/Details/5
