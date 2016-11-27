@@ -6,10 +6,6 @@
 
 <h2>Index</h2>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <link href="~/Content/Chapters.css" rel="stylesheet">
 <script src="~/Scripts/chapters-menu.js"></script>
 <nav id="chapters-navigation">
@@ -25,52 +21,31 @@
     </ul>
 </nav>
 
+<style>
+    .panel-collapse {
+        background-color: rgb(44, 29, 29);
+    }
+</style>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<h2>Accordion Example</h2>
-<p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
-@foreach (var item in Model)
-{
-<div class="container">
-    
-    <div class="panel-group" id="accordion">
+<div class="panel-group" id="accordion">
+    @{ int index = 1;}
+    @foreach (var item in Model)
+    {
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">@Html.DisplayFor(modelItem => item.Title)</a>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#@index">@item.Title</a>
                 </h4>
-
             </div>
-            <div id="collapse1" class="panel-collapse collapse in">
+            <div id="@index" class="panel-collapse collapse in">
                 <div class="panel-body">
-                    @Html.DisplayFor(modelItem => item.Content)
+                    @item.Content
                 </div>
             </div>
         </div>
-
-    </div>
+    }
 </div>
-<tr>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    </td>
-</tr>
-}
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th></th>
-    </tr>
-
-</table>
