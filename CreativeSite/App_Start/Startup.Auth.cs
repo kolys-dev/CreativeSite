@@ -6,6 +6,9 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using CreativeSite.Models;
+using Microsoft.Owin.Security.Twitter;
+using Microsoft.Owin.Security.Facebook;
+using Microsoft.Owin.Security;
 
 namespace CreativeSite
 {
@@ -45,24 +48,32 @@ namespace CreativeSite
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            var twitterAuthOptions = new TwitterAuthenticationOptions
+            {
+                ConsumerKey = "gTABcXJyBdVpwBfTvr0giycFg",
+                ConsumerSecret = "I2aeefsyPVh39rJS0d1hQ1gs1pg7wB0wwUeYow7nyjkuQs4Tqj",
+                BackchannelCertificateValidator = new CertificateSubjectKeyIdentifierValidator(new[]
+                {
+                    "A5EF0B11CEC04103A34A659048B21CE0572D7D47",
+                    "0D445C165344C1827E1D20AB25F40163D8BE79A5",
+                    "7FD365A7C2DDECBBF03009F34339FA02AF333133",
+                    "39A55D933676616E73A761DFA16A7E59CDE66FAD",
+                    "5168FF90AF0207753CCCD9656462A212B859723B",
+                    "B13EC36903F8BF4701D498261A0802EF63642BC3"
+                })
+            };
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication(twitterAuthOptions);
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            var facebookAuthOptions = new FacebookAuthenticationOptions()
+            {
+                AppId = "1084468928298655",
+                AppSecret = "95cdbcd614753a0be4fba107ba54a5e0"
+            };
+            // facebookAuthOptions.Scope.Add("email");
+            app.UseFacebookAuthentication(facebookAuthOptions);
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseVkontakteAuthentication("5540329", "XP2pImsqpRq3cVT9jWgD", "email");
         }
     }
 }
