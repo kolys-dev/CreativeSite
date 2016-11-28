@@ -41,13 +41,11 @@ namespace CreativeSite.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Chapter chapter = db.Chapters.Find(id);
-            var chptr = db.Chapters.Find(id);
             MarkDownChaptersContentHtml(chapter);
             if (chapter== null)
             {
                 return HttpNotFound();
             }
-            ViewBag.chptrid = id;
             return View(chapter);
         }
 
