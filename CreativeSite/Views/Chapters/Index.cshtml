@@ -7,7 +7,7 @@
 
 <link href="~/Content/Chapters.css" rel="stylesheet">
 <script src="~/Scripts/chapters-menu.js"></script>
-<nav id="chapters-navigation">
+<!--<nav id="chapters-navigation">
 
     <<ul id="chapters">
     @{ int i = 1;}
@@ -23,14 +23,15 @@
     }
 </ul>
 </nav>
-
+    -->
 <style>
     .panel-collapse {
-        background-color: rgb(178, 0, 255);
+        background-color: rgb(224, 224, 224);
     }
 
     .chapter-content {
         padding: 10px;
+        color: black;
     }
 </style>
 
@@ -42,13 +43,18 @@
     @{ int index = 1;}
     @foreach (var item in Model)
     {
+        <div>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+        </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#@index">@item.Title</a>
                 </h4>
             </div>
-            <div id="@index" class="panel-collapse collapse in">
+            <div id="@index" class="panel-collapse collapse ">
                 <div class="panel-body">
                     <div class="chapter-content">
                           @Html.Raw(item.Content)

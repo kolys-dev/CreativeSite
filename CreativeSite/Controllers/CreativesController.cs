@@ -101,6 +101,7 @@ namespace CreativeSite.Controllers
             {
                 return HttpNotFound();
             }
+            
             return View(creative);
         }
 
@@ -110,7 +111,13 @@ namespace CreativeSite.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Creative creative = db.Creatives.Find(id);
+            foreach (var chapter in creative.Chapters)
+            {
+                Chapter chapterr = db.Chapters.Find(id);
+                db.Chapters.Remove(chapterr);
+            }
             db.Creatives.Remove(creative);
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }
