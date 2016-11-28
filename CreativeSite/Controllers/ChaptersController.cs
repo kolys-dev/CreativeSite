@@ -35,15 +35,19 @@ namespace CreativeSite.Controllers
         // GET: Chapters/Details/5
         public ActionResult Details(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Chapter chapter = db.Chapters.Find(id);
-            if (chapter == null)
+            var chptr = db.Chapters.Find(id);
+            MarkDownChaptersContentHtml(chapter);
+            if (chapter== null)
             {
                 return HttpNotFound();
             }
+            ViewBag.chptrid = id;
             return View(chapter);
         }
 
@@ -146,6 +150,12 @@ namespace CreativeSite.Controllers
             {
                 chapter.Content = CommonMark.CommonMarkConverter.Convert(chapter.Content); 
             }
+        }
+
+        private void MarkDownChaptersContentHtml(Chapter chapter)
+        {
+           
+                chapter.Content = CommonMark.CommonMarkConverter.Convert(chapter.Content);
         }
     }
 }

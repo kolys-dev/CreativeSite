@@ -1,4 +1,6 @@
 ﻿@model CreativeSite.Models.Chapter
+<link rel="stylesheet" href="~/Scripts/TagEditor/jquery.tag-editor.css">
+<script src="~/Scripts/TagEditor/jquery.tag-editor.min.js"></script>
 
 @{
     ViewBag.Title = "Details";
@@ -6,29 +8,47 @@
 
 <h2>Details</h2>
 
-<div>
+<!--<div>
     <h4>Chapter</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-2">Tags</label>
+        
+        <div class="col-md-10">
+            <textarea class="form-control" name="Tags" id="#item"></textarea>
+        </div>
+    </div>
+</div>-->
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+        <div class="panel-group" id="accordion">
+           
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion"> @Model.Title</a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="chapter-content">
+                                @Html.Raw(Model.Content)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-    </dl>
-</div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<script>
+
+        $(function () {
+
+            $('#tags').tagEditor({
+                delimiter: ', ', /* space and comma */
+
+            });
+        })
+</script> 
